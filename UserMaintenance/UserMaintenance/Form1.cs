@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UserMaintenance.Entities;
 
 namespace UserMaintenance
 {
@@ -18,12 +19,28 @@ namespace UserMaintenance
             InitializeComponent();
             label1.Text = Resource1.LastName; 
             label2.Text = Resource1.FirstName; 
-            button1.Text = Resource1.Add; 
+            button1.Text = Resource1.Add;
+
+            listBox1.DataSource = users;
+            listBox1.ValueMember = "ID";
+            listBox1.DisplayMember = "FullName";
         }
+
+
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var u = new User()
+            {
+                LastName = label1.Text,
+                FirstName = label2.Text
+            };
+            users.Add(u);
         }
     }
 }
