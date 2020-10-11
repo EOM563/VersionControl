@@ -87,7 +87,7 @@ namespace week5
 
             using (StreamWriter sw = new StreamWriter(sfd.FileName, false, Encoding.UTF8))
             {
-                int sorszam = 1;
+                int sorszam = 0;
                 sw.Write("Időszak");
                 sw.Write(";");
                 sw.Write("Nyereség");
