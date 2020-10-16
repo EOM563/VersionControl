@@ -4,6 +4,7 @@ using week6.Entities;
 using System.ComponentModel;
 using System.Xml;
 using System;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace week6
 {
@@ -16,6 +17,7 @@ namespace week6
             InitializeComponent();
             dataGridView1.DataSource = Rates;
             harmadik_otodik();
+            hatodik();
         }
                 
         private void harmadik_otodik()
@@ -57,7 +59,27 @@ namespace week6
                     rate.Value = value / unit;
             }
         }
-      
+
+        private void hatodik()
+        {
+            chartRateData.DataSource = Rates;
+
+            var series = chartRateData.Series[0];
+            series.ChartType = SeriesChartType.Line;
+            series.XValueMember = "Date";
+            series.YValueMembers = "Value";
+            series.BorderWidth = 2;
+
+            var legend = chartRateData.Legends[0];
+            legend.Enabled = false;
+
+            var chartArea = chartRateData.ChartAreas[0];
+            chartArea.AxisX.MajorGrid.Enabled = false;
+            chartArea.AxisY.MajorGrid.Enabled = false;
+            chartArea.AxisY.IsStartedFromZero = false;
+        }
+
+
 
     }
 }
