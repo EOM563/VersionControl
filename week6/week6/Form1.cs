@@ -16,10 +16,16 @@ namespace week6
         {
             InitializeComponent();
             dataGridView1.DataSource = Rates;
+            RefreshData();
+        }
+
+        private void RefreshData()
+        {
+            Rates.Clear();
             harmadik_otodik();
             hatodik();
         }
-                
+
         private void harmadik_otodik()
         {
             //harmadik
@@ -27,9 +33,9 @@ namespace week6
 
             var request = new GetExchangeRatesRequestBody()
             {
-                currencyNames = "EUR",
-                startDate = "2020-01-01",
-                endDate = "2020-06-30"
+                currencyNames = comboBox1.Text.ToString(),
+                startDate = dateTimePicker1.Value.ToString(),
+                endDate = dateTimePicker2.Value.ToString()
             };
 
             var response = mnbService.GetExchangeRates(request);
@@ -79,7 +85,19 @@ namespace week6
             chartArea.AxisY.IsStartedFromZero = false;
         }
 
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            RefreshData();
+        }
 
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+            RefreshData();
+        }
 
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RefreshData();
+        }
     }
 }
