@@ -11,11 +11,39 @@ namespace week6
     public partial class Form1 : Form
     {
         BindingList<RateData> Rates = new BindingList<RateData>();
-        
+        BindingList<string> Currencies = new BindingList<string>();
         public Form1()
         {
             InitializeComponent();
             dataGridView1.DataSource = Rates;
+            comboBox1.DataSource = Currencies;
+
+
+            var mnbService = new MNBArfolyamServiceSoapClient();
+
+            var request = new GetCurrenciesRequestBody();
+
+            var response = mnbService.GetCurrencies(request);
+
+            var result = response.GetCurrenciesResult;
+
+            
+            var xml = new XmlDocument();
+            xml.LoadXml(result);
+
+            foreach (XmlElement element in xml.DocumentElement)
+            {   
+                //amúgy erre magamtól az életben nem jöttem volna rá :(       
+                for (int i = 0; i < element.ChildNodes.Count; i++)
+                {                    
+                    var childElement = (XmlElement)element.ChildNodes[i];
+
+                    var value = childElement.InnerText;
+
+                    Currencies.Add(value);
+                }
+            }
+
             RefreshData();
         }
 
@@ -56,6 +84,7 @@ namespace week6
 
 
                 var childElement = (XmlElement)element.ChildNodes[0];
+                if (childElement == null) continue;
                 rate.Currency = childElement.GetAttribute("curr");
 
 
