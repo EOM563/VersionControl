@@ -17,13 +17,18 @@ namespace week7
         List<Person> Population = new List<Person>();
         List<BirthProbability> BirthProbabilities = new List<BirthProbability>();
         List<DeathProbability> DeathProbabilities = new List<DeathProbability>();
+        List<int> CountMan = new List<int>();
+        List<int> CountWoman = new List<int>();
 
         Random rng = new Random(1234);
         public Form1()
         {
             InitializeComponent();
+        }
 
-            Population = GetPopulation(@"C:\Temp\nép-teszt.csv");
+        private void Simulation(string pop)
+        {
+            Population = GetPopulation(pop);
             BirthProbabilities = GetBirthProbabilities(@"C:\Temp\születés.csv");
             DeathProbabilities = GetDeathProbabilities(@"C:\Temp\halál.csv");
 
@@ -39,10 +44,12 @@ namespace week7
                 int nbrOfMales = (from x in Population
                                   where x.Gender == Gender.Male && x.IsAlive
                                   select x).Count();
+                CountMan.Add(nbrOfMales);
 
                 int nbrOfFemales = (from x in Population
                                     where x.Gender == Gender.Female && x.IsAlive
                                     select x).Count();
+                CountWoman.Add(nbrOfFemales);
 
                 Console.WriteLine(string.Format("Év:{0} Fiúk:{1} Lányok:{2}", year, nbrOfMales, nbrOfFemales));
             }
@@ -111,6 +118,15 @@ namespace week7
             return deathProb;
         }
 
+        private void DisplayResults()
+        {
+            for (int i = 2005; i < numericUpDown1.Value; i++)
+            {
+                richTextBox1.Text += $"Szimulációs év: {i} \n\t Fiúk: {CountMan[i-2005]} \n\t Lányok: {CountWoman[i - 2005]}\n\n";
+            }
+        }
+
+
         private void SimStep(int year, Person person)
         {
             if (!person.IsAlive) return;
@@ -141,6 +157,30 @@ namespace week7
                     Population.Add(újszülött);
                 }
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Simulation(textBox1.Text);
+            DisplayResults();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+
+            ofd.InitialDirectory = Application.StartupPath;
+            ofd.Filter = "Comma Seperated Values (*.csv)|*.csv";
+            ofd.DefaultExt = "csv";
+            ofd.AddExtension = true;
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                textBox1.Text = ofd.FileName;
+            }
+            else return;
+
+            
         }
     }
 }
