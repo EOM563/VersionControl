@@ -40,9 +40,9 @@
             // 
             // mainPanel
             // 
-            this.mainPanel.Location = new System.Drawing.Point(-3, 328);
+            this.mainPanel.Location = new System.Drawing.Point(-3, 172);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(804, 110);
+            this.mainPanel.Size = new System.Drawing.Size(805, 110);
             this.mainPanel.TabIndex = 0;
             // 
             // createTimer
@@ -59,16 +59,16 @@
             // 
             // btnColor
             // 
-            this.btnColor.Location = new System.Drawing.Point(13, 13);
+            this.btnColor.Location = new System.Drawing.Point(126, 69);
             this.btnColor.Name = "btnColor";
-            this.btnColor.Size = new System.Drawing.Size(108, 51);
+            this.btnColor.Size = new System.Drawing.Size(108, 18);
             this.btnColor.TabIndex = 1;
             this.btnColor.UseVisualStyleBackColor = true;
             this.btnColor.Click += new System.EventHandler(this.btnColor_Click);
             // 
             // btnSelectBall
             // 
-            this.btnSelectBall.Location = new System.Drawing.Point(241, 13);
+            this.btnSelectBall.Location = new System.Drawing.Point(126, 12);
             this.btnSelectBall.Name = "btnSelectBall";
             this.btnSelectBall.Size = new System.Drawing.Size(108, 51);
             this.btnSelectBall.TabIndex = 2;
@@ -78,7 +78,7 @@
             // 
             // btnSelectCar
             // 
-            this.btnSelectCar.Location = new System.Drawing.Point(127, 13);
+            this.btnSelectCar.Location = new System.Drawing.Point(12, 12);
             this.btnSelectCar.Name = "btnSelectCar";
             this.btnSelectCar.Size = new System.Drawing.Size(108, 51);
             this.btnSelectCar.TabIndex = 2;
@@ -89,18 +89,18 @@
             // lblNext
             // 
             this.lblNext.AutoSize = true;
-            this.lblNext.Location = new System.Drawing.Point(21, 99);
+            this.lblNext.Location = new System.Drawing.Point(373, 12);
             this.lblNext.Name = "lblNext";
             this.lblNext.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblNext.Size = new System.Drawing.Size(66, 13);
+            this.lblNext.Size = new System.Drawing.Size(70, 13);
             this.lblNext.TabIndex = 3;
-            this.lblNext.Text = "Coming Text";
+            this.lblNext.Text = "Coming Next:";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 330);
             this.Controls.Add(this.lblNext);
             this.Controls.Add(this.btnSelectCar);
             this.Controls.Add(this.btnSelectBall);
