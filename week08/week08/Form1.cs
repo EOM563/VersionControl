@@ -9,15 +9,16 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using week08.Entities;
 using System.Timers;
+using week08.Abstractions;
 
 namespace week08
 {
     public partial class Form1 : Form
     {
-        private List<Ball> _balls = new List<Ball>();
+        private List<Toy> _toys = new List<Toy>();
 
-        private CarFactory _factory;
-        public CarFactory Factory
+        private IToyFactory _factory;
+        public IToyFactory Factory
         {
             get { return _factory; }
             set { _factory = value; }
@@ -31,33 +32,33 @@ namespace week08
 
         private void createTimer_Tick(object sender, EventArgs e)
         {
-            var ball = Factory.CreateNew();
-            _balls.Add(ball);
-            ball.Left = -ball.Width;
+            var toy = Factory.CreateNew();
+            _toys.Add(toy);
+            toy.Left = -toy.Width;
 
-            mainPanel.Controls.Add(ball);
+            mainPanel.Controls.Add(toy);
         }
 
         private void conveyorTimer_Tick(object sender, EventArgs e)
         {
             var maxPosition = 0;
 
-            foreach (var ball in _balls)
+            foreach (var toy in _toys)
             {
-                ball.MoveBall();
-                if (ball.Left > maxPosition)
+                toy.MoveToy();
+                if (toy.Left > maxPosition)
                 {
-                    maxPosition = ball.Left;
+                    maxPosition = toy.Left;
                 }                  
             }
 
             if (maxPosition > 1000)
             {
-                var oldestBall = _balls[0];
+                var oldestToy = _toys[0];
 
-                mainPanel.Controls.Remove(oldestBall);
+                mainPanel.Controls.Remove(oldestToy);
 
-                _balls.Remove(oldestBall);
+                _toys.Remove(oldestToy);
             }
         }
     }
