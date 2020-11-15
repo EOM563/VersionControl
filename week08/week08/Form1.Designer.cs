@@ -32,6 +32,7 @@
             this.mainPanel = new System.Windows.Forms.Panel();
             this.createTimer = new System.Windows.Forms.Timer(this.components);
             this.conveyorTimer = new System.Windows.Forms.Timer(this.components);
+            this.btnColor = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // mainPanel
@@ -53,11 +54,21 @@
             this.conveyorTimer.Interval = 10;
             this.conveyorTimer.Tick += new System.EventHandler(this.conveyorTimer_Tick);
             // 
+            // btnColor
+            // 
+            this.btnColor.Location = new System.Drawing.Point(13, 13);
+            this.btnColor.Name = "btnColor";
+            this.btnColor.Size = new System.Drawing.Size(108, 51);
+            this.btnColor.TabIndex = 1;
+            this.btnColor.UseVisualStyleBackColor = true;
+            this.btnColor.Click += new System.EventHandler(this.btnColor_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnColor);
             this.Controls.Add(this.mainPanel);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -70,6 +81,7 @@
         private System.Windows.Forms.Panel mainPanel;
         private System.Windows.Forms.Timer createTimer;
         private System.Windows.Forms.Timer conveyorTimer;
+        private System.Windows.Forms.Button btnColor;
     }
 }
 
