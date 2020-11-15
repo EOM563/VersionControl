@@ -36,20 +36,22 @@
             // 
             // mainPanel
             // 
-            this.mainPanel.Location = new System.Drawing.Point(12, 338);
+            this.mainPanel.Location = new System.Drawing.Point(-3, 328);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(776, 100);
+            this.mainPanel.Size = new System.Drawing.Size(804, 110);
             this.mainPanel.TabIndex = 0;
             // 
             // createTimer
             // 
             this.createTimer.Enabled = true;
             this.createTimer.Interval = 3000;
+            this.createTimer.Tick += new System.EventHandler(this.createTimer_Tick);
             // 
             // conveyorTimer
             // 
             this.conveyorTimer.Enabled = true;
             this.conveyorTimer.Interval = 10;
+            this.conveyorTimer.Tick += new System.EventHandler(this.conveyorTimer_Tick);
             // 
             // Form1
             // 
