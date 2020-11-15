@@ -70,6 +70,19 @@ namespace week08
             }
         }
 
+        private void DisplayNext()
+        {
+            if (_nextToy != null)
+            {
+                Controls.Remove(_nextToy);
+            }
+
+            _nextToy = Factory.CreateNew();
+            _nextToy.Top = lblNext.Top + lblNext.Height + 20;
+            _nextToy.Left = lblNext.Left;
+            Controls.Add(_nextToy);
+        }
+
         private void btnColor_Click(object sender, EventArgs e)
         {
             var button = (Button)sender;
@@ -94,17 +107,13 @@ namespace week08
             };
         }
 
-        private void DisplayNext()
+        private void btnSelectPresent_Click(object sender, EventArgs e)
         {
-            if (_nextToy != null)
+            Factory = new PresentFactory
             {
-                Controls.Remove(_nextToy);
-                _nextToy = Factory.CreateNew();
-                _nextToy.Top = lblNext.Top + lblNext.Height + 20;
-                _nextToy.Left = lblNext.Left;
-                Controls.Add(_nextToy);
-            }
-                
+                BoxColor = pBtnColor1.BackColor,
+                RibbonColor = pBtnColor2.BackColor
+            };
         }
     }
 }
