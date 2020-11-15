@@ -16,8 +16,8 @@ namespace week08
     {
         private List<Ball> _balls = new List<Ball>();
 
-        private BallFactory _factory;
-        public BallFactory Factory
+        private CarFactory _factory;
+        public CarFactory Factory
         {
             get { return _factory; }
             set { _factory = value; }
@@ -26,7 +26,7 @@ namespace week08
         public Form1()
         {
             InitializeComponent();
-            Factory = new BallFactory();
+            Factory = new CarFactory();
         }
 
         private void createTimer_Tick(object sender, EventArgs e)
