@@ -50,6 +50,8 @@ namespace UnitTest1
             Assert.AreEqual(expectedResult, actualResult);
         }
 
+
+
         [
             Test,
             TestCase("irf@uni-corvinus.hu", "Abcd1234"),
@@ -68,6 +70,7 @@ namespace UnitTest1
             Assert.AreEqual(password, actualResult.Password);
             Assert.AreNotEqual(Guid.Empty, actualResult.ID);
         }
+
 
 
         [
