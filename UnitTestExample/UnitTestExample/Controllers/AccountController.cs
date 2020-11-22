@@ -50,7 +50,9 @@ namespace UnitTestExample.Controllers
 
         public bool ValidatePassword(string password)
         {
-            return true;
+            return Regex.IsMatch(
+                password, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$");
+            //forrás https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a?fbclid=IwAR0KTVcyAbRqGfki5EZVj9IjK5ax7JCoYA5DUI9UvDYMRwKWOSApxhd1VQw
         }
     }
 }
